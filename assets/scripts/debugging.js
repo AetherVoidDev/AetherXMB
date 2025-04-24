@@ -1,8 +1,10 @@
 (() => {
   const triggerKey = 'd';
   let popupVisible = false;
+  let secondPopupVisible = false;
 
   let popup = null;
+  let secondPopup = null;
 
   function createPopup() {
     if (popupVisible) {
@@ -15,7 +17,7 @@
     popup = document.createElement('div');
     popup.id = 'custom-popup';
     popup.innerHTML = `
-      <p style="font-weight: bold;">DEBUG INFORMATION:</p>
+      <p style="font-weight: bold;">DEBUG INFO:</p>
       <p>HostName: 0.0.0.0</p>
       <p>Connected from: 0.0.0.0</p>
     `;
@@ -26,12 +28,12 @@
       right: '20px',
       backgroundColor: '#1a1a1a',
       color: 'white',
-      borderRadius: '8px',  // Adjusted the corner radius to 8px
-      padding: '12px 16px',  // Made the padding smaller
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.4)',  // Reduced shadow for a slightly more compact look
+      borderRadius: '8px',
+      padding: '12px 16px',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.4)',
       fontFamily: 'Segoe UI, sans-serif',
       zIndex: '9999',
-      maxWidth: '250px',  // Reduced the max width
+      maxWidth: '250px',
       animation: 'fadeSlideIn 0.4s ease-out'
     });
 
@@ -43,6 +45,56 @@
     document.body.appendChild(popup);
 
     popupVisible = true;
+
+    createSecondPopup();
+  }
+
+  function createSecondPopup() {
+    if (secondPopupVisible) return;
+
+    secondPopup = document.createElement('div');
+    secondPopup.id = 'second-popup';
+    secondPopup.innerHTML = `
+      <p style="font-weight: bold;">SYSTEM INFO:</p>
+      <p id="temperature-line">Temperature: 45°C</p>
+      <p>System Version: 0.56</p>
+      <p>XMB Version: 0.0.88</p>
+      <p>Free Space: 999.9GB / 1TB</p>
+    `;
+
+    Object.assign(secondPopup.style, {
+      position: 'fixed',
+      bottom: '100px',
+      right: '20px',
+      backgroundColor: '#1a1a1a',
+      color: 'white',
+      borderRadius: '8px',
+      padding: '12px 16px',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.4)',
+      fontFamily: 'Segoe UI, sans-serif',
+      zIndex: '9998',
+      maxWidth: '250px',
+      animation: 'fadeSlideIn 0.4s ease-out'
+    });
+
+    Array.from(secondPopup.children).forEach(p => {
+      p.style.margin = '4px 0';
+      p.style.textAlign = 'left';
+    });
+
+    document.body.appendChild(secondPopup);
+
+    secondPopupVisible = true;
+
+    updateTemperature();
+  }
+
+  function updateTemperature() {
+    const tempLine = document.getElementById('temperature-line');
+    setInterval(() => {
+      const newTemp = Math.floor(Math.random() * (62 - 45 + 1)) + 45;
+      tempLine.textContent = `Temperature: ${newTemp}°C`;
+    }, 2000);
   }
 
   function closePopup() {
@@ -53,6 +105,17 @@
       popup.remove();
       popupVisible = false;
       popup = null;
+    });
+  }
+
+  function closeSecondPopup() {
+    if (!secondPopup) return;
+
+    secondPopup.style.animation = 'fadeSlideOut 0.4s ease-in';
+    secondPopup.addEventListener('animationend', () => {
+      secondPopup.remove();
+      secondPopupVisible = false;
+      secondPopup = null;
     });
   }
 
