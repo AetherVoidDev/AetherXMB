@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home</title>
+  <link rel="stylesheet" href="https://aethervoiddev.github.io/AetherXMB/assets/styles/main.css" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+      color: white;
+      overflow: hidden;
+      flex-direction: column;
+    }
+
+    #nav-bar {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      background-color: #333;
+      border-radius: 8px;
+      padding: 8px 0;
+      width: 98%;
+      position: absolute;
+      top: 20px;
+      left: 1%;
+    }
+
+    #nav-bar img {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+      transition: transform 0.3s ease, border 0.3s ease;
+    }
+
+    #nav-bar img:hover {
+      transform: scale(0.4);
+      border: 1px solid white;
+      border-radius: 8px;
+    }
+
+    #nav-bar img.selected {
+      border: 1px solid white;
+      transform: scale(1.1);
+    }
+
+    #icon-text {
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 10px;
+      color: #ccc;
+      position: absolute;
+      width: 100%;
+      top: calc(20px + 48px);
+    }
+
+    #icon-text span {
+      display: none;
+    }
+
+    #icon-text span.active {
+      display: inline-block;
+    }
+
+    .icon-highlight {
+      border: 2px solid white;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="nav-bar">
+    <img src="https://aethervoiddev.github.io/AetherXMB/assets/media/icons/power.png" alt="Power" data-text="Power" />
+    <img src="https://aethervoiddev.github.io/AetherXMB/assets/media/icons/user.png" alt="User" data-text="User" />
+    <img src="https://aethervoiddev.github.io/AetherXMB/assets/media/icons/settings.png" alt="Settings" data-text="Settings" />
+    <img src="https://aethervoiddev.github.io/AetherXMB/assets/media/icons/audio.png" alt="Audio" data-text="Audio" />
+    <img src="https://aethervoiddev.github.io/AetherXMB/assets/media/icons/video.png" alt="Video" data-text="Video" />
+    <img src="https://aethervoiddev.github.io/AetherXMB/assets/media/icons/image.png" alt="Image" data-text="Image" />
+    <img src="https://aethervoiddev.github.io/AetherXMB/assets/media/icons/game.png" alt="Game" data-text="Game" />
+    <img src="https://aethervoiddev.github.io/AetherXMB/assets/media/icons/network.png" alt="Network" data-text="Network" />
+    <img src="https://aethervoiddev.github.io/AetherXMB/assets/media/icons/online.png" alt="Online" data-text="Online" />
+  </div>
+
+  <div id="icon-text">
+    <span id="text-1" class="active">Power</span>
+    <span id="text-2">User</span>
+    <span id="text-3">Settings</span>
+    <span id="text-4">Audio</span>
+    <span id="text-5">Video</span>
+    <span id="text-6">Image</span>
+    <span id="text-7">Game</span>
+    <span id="text-8">Network</span>
+    <span id="text-9">Online</span>
+  </div>
+
+  <script src="https://aethervoiddev.github.io/AetherXMB/assets/scripts/debugging.js"></script>
+
+  <script>
+    const icons = document.querySelectorAll('#nav-bar img');
+    const textElements = document.querySelectorAll('#icon-text span');
+    let selectedIndex = 0;
+
+    function updateSelectedIcon() {
+      icons.forEach((icon, index) => {
+        icon.classList.remove('selected');
+        textElements[index].classList.remove('active');
+        icon.classList.remove('icon-highlight');
+        if (index === selectedIndex) {
+          icon.classList.add('selected');
+          textElements[index].classList.add('active');
+          icon.classList.add('icon-highlight');
+        }
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        selectedIndex = (selectedIndex + 1) % icons.length;
+        updateSelectedIcon();
+      } else if (e.key === 'ArrowLeft') {
+        selectedIndex = (selectedIndex - 1 + icons.length) % icons.length;
+        updateSelectedIcon();
+      }
+    });
+
+    updateSelectedIcon();
+  </script>
+
+</body>
+</html>
