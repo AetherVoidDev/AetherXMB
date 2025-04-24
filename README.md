@@ -9,7 +9,7 @@ Want to join in and add something? Or maybe You have some suggestions? Feel free
 ---
 
 ### Credits
-[Brackets Editor](https://brackets.io): Code editor
-[GitHub](https://github.com): Page hosting
-[FlatIcon](https://flaticon.com): Icons
-[Google Images](https://google.com): Background & other images
+[Brackets Editor](https://brackets.io): Code editor  
+[GitHub](https://github.com): Page hosting  
+[FlatIcon](https://flaticon.com): Icons  
+[Google Images](https://google.com): Background & other images  
