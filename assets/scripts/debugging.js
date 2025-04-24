@@ -20,6 +20,7 @@
       <p style="font-weight: bold;">DEBUG INFORMATION:</p>
       <p>HostName: 0.0.0.0</p>
       <p>Connected from: 0.0.0.0</p>
+      <p>XMB Mode: Developer</p>
     `;
 
     Object.assign(popup.style, {
@@ -55,11 +56,11 @@
     secondPopup = document.createElement('div');
     secondPopup.id = 'second-popup';
     secondPopup.innerHTML = `
-      <p style="font-weight: bold;">SYSTEM STATUS:</p>
+      <p style="font-weight: bold;">SYSTEM INFO:</p>
       <p id="temperature-line">Temperature: 45°C</p>
-      <p>System Status: OK</p>
-      <p>Network: Stable</p>
-      <p>Power: Active</p>
+      <p>System Version: 0.0.88</p>
+      <p>XMB Version: 0.0.55</p>
+      <p>Free Space: 998.6GB / 1TB</p>
     `;
 
     Object.assign(secondPopup.style, {
