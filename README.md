@@ -13,3 +13,9 @@ Want to join in and add something? Or maybe You have some suggestions? Feel free
 [GitHub](https://github.com): Page hosting  
 [FlatIcon](https://flaticon.com): Icons  
 [Google Images](https://google.com): Background & other images  
+
+---
+
+### Notes
+- To navigate, use the arrow keys on Your keyboard.
+- To open debug and system popups, press the "d" key.
