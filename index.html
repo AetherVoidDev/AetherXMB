@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome to AetherXMB</title>
+
+  <link rel="stylesheet" href="assets/styles/main.css" />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .fade-wrapper {
+      text-align: center;
+      opacity: 1;
+      transition: opacity 1s ease;
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+
+    h4 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="fade-wrapper" id="textBlock">
+    <h4>Welcome to AetherXMB</h4>
+    <p>A modern game console XMB, written in HTML, CSS & JS.<br>Don't forget to star the GitHub repo!</p>
+  </div>
+
+  <script src="assets/scripts/debugging.js"></script>
+
+  <script>
+    setTimeout(() => {
+      const block = document.getElementById('textBlock');
+      block.classList.add('fade-out');
+
+      setTimeout(() => {
+        window.location.href = "interface/home.html";
+      }, 1000);
+    }, 5000);
+  </script>
+
+</body>
+</html>
