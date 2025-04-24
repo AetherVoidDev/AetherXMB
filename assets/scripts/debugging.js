@@ -17,7 +17,7 @@
     popup = document.createElement('div');
     popup.id = 'custom-popup';
     popup.innerHTML = `
-      <p style="font-weight: bold;">DEBUG INFO:</p>
+      <p style="font-weight: bold;">DEBUG INFORMATION:</p>
       <p>HostName: 0.0.0.0</p>
       <p>Connected from: 0.0.0.0</p>
     `;
@@ -55,16 +55,16 @@
     secondPopup = document.createElement('div');
     secondPopup.id = 'second-popup';
     secondPopup.innerHTML = `
-      <p style="font-weight: bold;">SYSTEM INFO:</p>
+      <p style="font-weight: bold;">SYSTEM STATUS:</p>
       <p id="temperature-line">Temperature: 45°C</p>
-      <p>System Version: 0.56</p>
-      <p>XMB Version: 0.0.88</p>
-      <p>Free Space: 999.9GB / 1TB</p>
+      <p>System Status: OK</p>
+      <p>Network: Stable</p>
+      <p>Power: Active</p>
     `;
 
     Object.assign(secondPopup.style, {
       position: 'fixed',
-      bottom: '100px',
+      bottom: '120px',
       right: '20px',
       backgroundColor: '#1a1a1a',
       color: 'white',
