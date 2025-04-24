@@ -1,7 +1,7 @@
 ### Introduction
-Welcome to AetherXMB, a fun project that a few AetherVoid Members have started. It's a PS3 XMB redesign with modern touches. Of course, there will be a lot of features that won't be included as this is all being written in HTML, CSS and JS.
+Welcome to AetherXMB. A modern game console XMB written in HTML, CSS & JS. It's a little project that a few AetherVoid Members started as a bit of fun.
 
 ---
 
 ### Contribution
-Want something to be added? Feel free to open an issue and let Us know! If You enjoy this project and its development and would like to help out, feel free to leave a star!
+Want to join in and add something? Or maybe You have some suggestions? Feel free to open an issue and tell Us!
