@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recovery Menu</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .bar {
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      padding: 10px 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 20px;
+    }
+
+    .top-bar {
+      margin-top: 20px;
+    }
+
+    .bottom-bar {
+      margin-bottom: 20px;
+    }
+
+    .icon-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    .bar img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .bottom-bar .bar-content {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .menu {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .menu-option {
+      padding: 12px 24px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .menu-option:hover,
+    .menu-option.selected {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid #ccc;
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+      text-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bar top-bar">
+    <div class="icon-group">
+      <img src="assets/media/icons/recovery.png" alt="Recovery">
+      <span>System Recovery</span>
+    </div>
+  </div>
+
+  <div class="menu" id="menu">
+    <div class="menu-option selected">Reboot</div>
+    <div class="menu-option">Power Off</div>
+    <div class="menu-option">Rebuild Database</div>
+    <div class="menu-option">Check File System</div>
+    <div class="menu-option">Update System</div>
+    <div class="menu-option">Reset Settings</div>
+    <div class="menu-option">Factory Reset System</div>
+  </div>
+
+  <div class="bar bottom-bar">
+    <div class="bar-content">
+      <div class="icon-group"><img src="assets/media/icons/up.png" alt="">Up</div>
+      <div class="icon-group"><img src="assets/media/icons/down.png" alt="">Down</div>
+      <div class="icon-group"><img src="assets/media/icons/left.png" alt="">Left</div>
+      <div class="icon-group"><img src="assets/media/icons/right.png" alt="">Right</div>
+    </div>
+  </div>
+
+  <script>
+    const options = document.querySelectorAll('.menu-option');
+    let currentIndex = 0;
+
+    function updateSelection(index) {
+      options.forEach((opt, i) => {
+        opt.classList.toggle('selected', i === index);
+        opt.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') {
+        currentIndex = (currentIndex + 1) % options.length;
+        updateSelection(currentIndex);
+      } else if (e.key === 'ArrowUp') {
+        currentIndex = (currentIndex - 1 + options.length) % options.length;
+        updateSelection(currentIndex);
+      }
+    });
+  </script>
+
+</body>
+</html>
